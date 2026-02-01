@@ -1,6 +1,8 @@
 #!/bin/bash
 
 
+set -e
+
 # Get the latest version number from GitHub
 LATEST=$(curl -s https://api.github.com/repos/prometheus/node_exporter/releases/latest | grep tag_name | cut -d '"' -f 4 | tr -d 'v')
 
