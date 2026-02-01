@@ -35,8 +35,6 @@ sudo chown prometheus:prometheus /usr/local/bin/promtool
 
 # Install config files
 echo "[*] Installing configuration..."
-sudo cp -r consoles /etc/prometheus
-sudo cp -r console_libraries /etc/prometheus
 sudo cp prometheus.yml /etc/prometheus/prometheus.yml
 
 # Set ownership
