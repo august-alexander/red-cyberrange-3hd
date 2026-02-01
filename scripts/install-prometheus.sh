@@ -98,5 +98,3 @@ if systemctl is-active --quiet prometheus; then
 else
     echo "[-] Something went wrong. Check: sudo systemctl status prometheus"
 fi
-
-vi /etc/prometheus/prometheus.yml
