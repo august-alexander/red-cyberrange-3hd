@@ -35,29 +35,7 @@ sudo chown prometheus:prometheus /usr/local/bin/promtool
 
 # Create Custom yml to connect Node_Exporter and remote write to Grafana.
 
-echo "[*] Creating custom configuration..."
-sudo tee /etc/prometheus/prometheus.yml > /dev/null <<EOF
-global:
-  scrape_interval: 15s
-
-remote_write:
-  - url: "https://prometheus-prod13-us-east-0.grafana.net/api/prom/push"
-    basic_auth:
-      username: "YOUR_INSTANCE_ID"
-      password: "REPLACE_WITH_API_KEY"
-
-scrape_configs:
-  - job_name: "prometheus"
-    static_configs:
-      - targets: ["localhost:9090"]
-
-  - job_name: "node"
-    static_configs:
-      - targets: ["localhost:9100"]
-        labels:
-          instance: "REPLACE_WITH_HOSTNAME"
-EOF
-
+wget https://raw.githubusercontent.com/august-alexander/red-cyberrange-3hd/main/
 
 # Set ownership
 sudo chown -R prometheus:prometheus /etc/prometheus
