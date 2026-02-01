@@ -35,7 +35,7 @@ sudo chown prometheus:prometheus /usr/local/bin/promtool
 
 # Create Custom yml to connect Node_Exporter and remote write to Grafana.
 
-wget https://raw.githubusercontent.com/august-alexander/red-cyberrange-3hd/main/
+wget -O /etc/prometheus/prometheus.yml https://raw.githubusercontent.com/august-alexander/red-cyberrange-3hd/main/config/prometheus.yml 
 
 # Set ownership
 sudo chown -R prometheus:prometheus /etc/prometheus
