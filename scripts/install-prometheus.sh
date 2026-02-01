@@ -5,6 +5,12 @@
 
 set -e
 
+# Prompt for Grafana Cloud credentials
+echo "[*] Grafana Cloud Configuration"
+read -p "Enter Grafana Instance ID: " INSTANCE_ID
+read -p "Enter Grafana API Key: " API_KEY
+read -p "Enter Hostname for this node: " NODE_HOSTNAME
+
 # Get latest version
 echo "[*] Fetching latest Prometheus version..."
 LATEST=$(curl -s https://api.github.com/repos/prometheus/prometheus/releases/latest | grep tag_name | cut -d '"' -f 4 | tr -d 'v')
@@ -36,6 +42,14 @@ sudo chown prometheus:prometheus /usr/local/bin/promtool
 # Create Custom yml to connect Node_Exporter and remote write to Grafana.
 
 wget -O /etc/prometheus/prometheus.yml https://raw.githubusercontent.com/august-alexander/red-cyberrange-3hd/main/config/prometheus.yml 
+
+# Substitute provided Values
+sudo sed -i "s/ID_HERE/$INSTANCE_ID/" /etc/prometheus/prometheus.yml
+sudo sed -i "s/API_KEY_HERE/$API_KEY/" /etc/prometheus/prometheus.yml
+sudo sed -i "s/HOSTNAME_HERE/$NODE_HOSTNAME/" /etc/prometheus/prometheus.yml
+
+
+
 
 # Set ownership
 sudo chown -R prometheus:prometheus /etc/prometheus
