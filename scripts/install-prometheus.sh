@@ -58,9 +58,6 @@ scrape_configs:
           instance: "REPLACE_WITH_HOSTNAME"
 EOF
 
-# Install config files
-echo "[*] Installing configuration..."
-sudo cp prometheus.yml /etc/prometheus/prometheus.yml
 
 # Set ownership
 sudo chown -R prometheus:prometheus /etc/prometheus
